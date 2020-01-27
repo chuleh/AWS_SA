@@ -139,3 +139,48 @@ Each of them have _policies_ that defines what each of them can and cannot do.
     you can copy the snapshot while reencypting it with a key of your own. You own the copied snapshot and can register it as a new AMI
   - You can't copy and AMI associated with a _billingProduct_ that was sahred with you from another account. Including Windows AMIs and AMIs from the Marketplace.
     To copy a shared AMI with a _billingProduct_ code, launch and EC2 instance in your account using the shared AMI and then create and AMI from the instance.
+
+
+## Placement Groups
+* When you want to control the EC2 Instance placement strategy
+* When you create a placement group, specify one of the following strategies:
+  - Cluster: cluster instances into a low-latency group in a single AZ.
+    - great network (10 gbps bandwidth between instances)
+    - if the rack fails, all instances fail at the same time
+    - use case: big data job that need to complete fast / an app that needs extremely low latency and high network throughput
+  - Spread: spreads instances across underlying hardware (max 7 instances per group per AZ) - critical applications
+    - can span across AZs
+    - reduced risk in simultaneous failure 
+    - limited to 7 instances pero AZ per placement group
+    - use case: app that needs to maximie HA / Critical apps where each instance must be isolated from failure from each other
+  - Partition: spreads instances across many different partitions (which rely on different sets of racks) within an AZ. Scales to 100s of 
+    EC2 instances per group (Hadoop, Cassandra, Kafka)
+    - up to 7 partitions per AZ
+    - up to 100s of EC2 instances
+    - instances in a partition do not share racks with the instances in other partitions
+    - partition failure can affect many EC2 but won't affect other partitions
+    - EC2 instances get access to the partition information as metada 
+    - use case: HDFS / HBase / Cassandra / Kafka
+
+
+
+
+### EC2 for Solutions Architects
+* Billed by the second - t2.micro is free tier
+* Timeout issues => security group issues
+* Permission issues => chmod 0400
+* SGs can reference other SGs instead of IP ranges
+* Know difference between Public, Private, Elastic IP
+* You can customize EC2 instance at boot time using EC2 User Data
+* 4 Launch modes:
+  - on demand
+  - reserved
+  - spot
+  - dedicated
+* Instance Types: R, C, M, I, G, T2/T3
+* Can create AMIs to preinstall software on your EC2 => faster boot
+* AMI can be copied across regions and accounts (locked to region and account by default)
+* EC2 instances can be started in placement groups:
+  - cluster
+  - spread
+  - partition
