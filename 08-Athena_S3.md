@@ -86,3 +86,69 @@
 * You can transition objects between storage classes
 * For infrequently accessed object, move them to STANDARD_IA
 * For archive objects you don't need in real time, GLACIER or DEEP_ARCHIVE
+* Moving objects can be automated using a lifecycle configuration
+  - Transition actions
+    - It defines when objects are transitioned to another storage class
+    - Move objects to STANDARD_IA class 60 days after creation
+    - Move to Glacier for archiving after 6 months
+  - Expiration Actions
+    - Configure objects to expire (Delete) after some time
+    - Access Log files can be set to delete after 365 days
+    - Can be used to delete old versions of files (if versioning is enabled)
+    - Can be used to delete incomplete multi-part uploads
+* Rules can be created for a certain prefix (ex - S3://mybucket/mp3/asterisco)
+* Rules can be created for certain objects tags (ex - Department: Finance)
+
+## S3 Baseline Performance
+* S3 automatically scales to high request rates - latency 100-200ms
+* Your app can achieve at least 3.5k PUT/COPY/POST/DELETe and 5.5k GET/HEAD requests per second per prefix in a bucket
+* Therre are no limits to the number of prefixes in a bucket
+* If you spread READS across all four prefixes evenly, you can achieve 22k request per second for GET and HEAD
+
+### Performance
+* Multi-part Upload
+  - recommended for files > 100MB
+  - must use for files > 5GB
+  - can help parallelize uploads
+* S3 Transfer acceleration (upload only)
+  - increase transfer speed by transferring file to an AWS edge location which will forward the data to the S3 bucket in
+    the target region
+  - compatible with mult-part upload
+* S3 Byte-range fetches
+  - Parallelize GETs by requesting specific byte ranges
+  - Better resilience in case of failures
+  - can be used to speed up downloads
+  - can be used to retrieve only partial data (for example head of the file)
+
+## KMS Limitation
+* If you use SSE-KMS, you may be impacted by the KMS limits
+  - when you upload, it calls the _GenerateDataKey_ KMS API
+  - when you download, it calls the _Decrypt_ KMS API
+  - count towards the KMS quota per second (5500, 10000, 30000 reqs based on region)
+  - as of today, you cannot request a quota increase for KMS
+  - if more reqs than region can handle > throttle
+
+
+## S3 Select & Glacier Select
+* Retrieve less data using SQL by performing _server side filtering_
+* Can filter by rows & columns (simple sql statements)
+* Less network transfer, less CPU cost client-side
+
+## S3 Object Lock & Glacier Vault Lock
+* S3 Object Lock
+  - Adopt a WORM (Write Once Read Many) model
+  - block an object version deletion for a specified amont of time
+* Glacier Vault Lock
+  - Adopt a WORM (Write Once Read Many) model
+  - Lock the policy for future edits (can no longer be changed)
+  - Helpful for compliance and data retention
+
+## Athena
+* Serverless service to perform analytics directly against S3 files
+* Use SQL language to query the files
+* Has a JDBC/ODBC driver
+* Charged per query and amount of data scanned
+* Supports CSV, Json, ORC, Avro and Parquet (built on Presto)
+* Use cases:
+  - business intelligence / analytics / reporting, analyze & query / vpc flow logs / ELB logs / CloudTrail tails / etc
+  - Exam Tip: Analyze data directly on S3 => use Athena
