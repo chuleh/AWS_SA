@@ -29,7 +29,7 @@
 <details>
   <summary>:zap: GitHub Stats</summary>
 
-  <img align="left" alt="chuleh's GitHub Stats" src="https://github-readme-stats.codestackr.vercel.app/api?username=chuleh&show_icons=true&hide_border=true" />
+  <img align="left" alt="chuleh's GitHub Stats" src="https://github-readme-stats.chuleh.vercel.app/api?username=chuleh&show_icons=true&hide_border=true" />
 
 </details>
 
