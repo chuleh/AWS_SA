@@ -80,6 +80,17 @@ Each of them have _policies_ that defines what each of them can and cannot do.
 * Audit permissions of your account with IAM Credentials Report
 * Never share IAM users && Access Keys
 
+# IAM Summary
+- Users: mapped to physical users, has a password for AWS console
+- Groups: contains users only
+- Policy: JSON document that outlines permissions for users or groups
+- Roles: give permissions to AWS services (eg: EC2)
+- Security: MFA + Password Policy
+- Access Keys: access AWS using SDK or CLI
+- Audit: IAM Credentials Report && IAM Access Advisor
+
+
+# Legacy (creo que ya no es parte del AWS CSA)
 ## IAM Federation
 * Big enterprises usually integrate their own repository of users with IAM
 * Can login into AWS using their company credentials (eg: Active directory)
