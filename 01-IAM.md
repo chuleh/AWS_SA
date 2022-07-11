@@ -10,7 +10,7 @@
 
 - user: a phsyical person - can belong to several groups
 - group: contains users - can only contain users _NOT_ other groups
-- roles: internal usage within AWS resources - we give the to machines
+- roles: internal usage within AWS resources - we give them to machines
 
 ## Permissions
 Each of them have _policies_ that defines what each of them can and cannot do.
