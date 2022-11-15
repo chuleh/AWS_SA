@@ -9,6 +9,7 @@
   - you get billed by provisioned capacity not used!
 * You can increaste the capacity of the drive over time
 * Only IO1 and GP2 can be used as boot volumes!
+* think of like a "network usb stick"
 
 ## EBS Volume Types
 * GP2 (SSD): General Purpose SSD - balance price and performance for a wide variety of workloads
