@@ -69,22 +69,82 @@
     * MAX PIOPS: 256K with an IOPS:GB ratio of 1000:1
     * supports EBS multi-attach
 
+* HDD (Hard Disk Drives)
 * st1 (HDD): Low cost HDD volume designed for frequently accesed, throughput intensive workloads
+  * throughput optimized
+  * cannot be a boot volume
   * Streaming workloads requiring consistent, fast throughput at a low price
   * Big Data, Data Warehouses, Log processing
   * Apache Kafka
-  * cannot be a boot volume
   * 500GB - 16TB
   * max IOPS is 500
   * max throughput of 500MB/S  - can burst
 * sc1 (HDD): Lowest cost HDD volume designed for less frequently accesed workloads
+  * cannot be a boot volume
+  * Cold HDD
+  * infrequently accessed data
   * throughput oriented storage for large volumes of data that is infrequently accesed
   * scenarios where lowest cost storage is important
-  * cannot be a boot volume
   * 500GB to 16TB
   * max IOPS is 250
   * max throughput of 250MS/s - can burst
 
+## EBS Multi-Attach
+
+* io1/io2 family
+* attach the same EBS volume to multiple EC2 isntances in the same AZ
+* each instance has RW permission to the high-performance volume
+* Use case:
+  * higher application availability in clustered linux apps (ex: Teradata)
+  * apps must manage concurrent write operations
+  * cannot attach from one AZ to another AZ
+  * up to 16 EC2 instances at a time
+  * must use a file system that is cluster-aware (not XFS, EXT4, etc)
+
+## EBS Encryption
+
+* data a rest is encrypted inside the volume
+* data in flight moving between instance and volume is encrypted
+* all snapshot are encrypted
+* all volumes created from snapshot are encrypted
+* encryption and decryption are handled transparently by EC2 and EBS
+* minimal impact on latency
+* EBS encryption leverages keys from KMS (AES-256)
+* Copying and unencrypted snapshot allows encryption
+* snapshots of encrypted volumes are encrypted
+* Encrypt an unencrypted EBS volume
+  * create a snapshot of the volume
+  * encrypt the EBS snapshot (using copy) -- copy the snapshotted volume and create a copy of it and then you can
+    encrypt it
+  * create a new EBS volume from the snapshot (the volume will also be encrypted)
+  * now you can attach the volume to the original instance
+
+## EBS Volume migration
+
+* EBS Volumes locked to a specific AZ
+* To migrate to a different AZ or Region
+  * snapshot the volume
+  * copy the volume to a different region
+  * create a volume from the snapshot in the AZ of your choice
+
+## EFS  Elastic File System
+
+* Managed NFS (network file system) that can be mounted on many EC2
+* Same region
+* Multi AZ
+* Higly available / scalable / expensive (3x gp2) / pay per use
+* Needs an SG
+* Uses NFS v4.1 protocol
+* use cases: content management / web serving / data sharing / wordpress
+* Linux only
+* Performance mode:
+  * general purpose (default)
+  * Max I/O - used when thousands of EC2 are using the same EFS
+* EFS file sync to sync from on-prem file system to EFS
+* Backup EFS-to-EFS (incremental - can choose frequency)
+* Encryption at rest using KMS
+
+## EFS Performance and storage
 ## AMI Overview
 
 * AMI == Amazon Machine Image
