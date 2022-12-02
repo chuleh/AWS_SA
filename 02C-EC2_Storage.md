@@ -92,7 +92,7 @@
 ## EBS Multi-Attach
 
 * io1/io2 family
-* attach the same EBS volume to multiple EC2 isntances in the same AZ
+* attach the same EBS volume to multiple EC2 instances in the same AZ
 * each instance has RW permission to the high-performance volume
 * Use case:
   * higher application availability in clustered linux apps (ex: Teradata)
@@ -127,12 +127,42 @@
   * copy the volume to a different region
   * create a volume from the snapshot in the AZ of your choice
 
+## EBS RAID Options
+
+* RAID possible as long as OS supports it
+* RAID 0
+  * 1 logical volume
+  * striped
+  * increase performance
+  * Combining 2 or more volumes and getting the total disk space and I/O
+  * One disk fails, all data is failed
+  * Use cases:
+    * app that needs lots of IOPS and doesn't need fault tolerance
+    * DB that already has replication built-in
+  * Using this we can have a very big disk with a lot of IOPS
+    * eg: 2 500GB EBS io1 Volumes with 4k provisioned IOPS each will create 1k GB RAID 0 Array with bandwidth of 8k IOPS
+      and 1k MB/s of throughput
+* RAID 1
+  * 1 logical volume
+  * mirored
+  * fault tolerance
+  * if one disk fails our logical volume is still working
+  * more network throughput > send data to 2 EBS volumes at the same time (2x network)
+  * Use cases:
+    * app that need increase fault tolerance
+    * need to service disks
+* RAID 5 (not recommended for EBS)
+* RAID 6 (not recommended for EBS)
+
 ## EFS  Elastic File System
 
 * Managed NFS (network file system) that can be mounted on many EC2
 * Same region
 * Multi AZ
-* Higly available / scalable / expensive (3x gp2) / pay per use
+* Higly available
+* Scalable
+* Expensive (3x gp2)
+* _pay per use_
 * Needs an SG
 * Uses NFS v4.1 protocol
 * use cases: content management / web serving / data sharing / wordpress
@@ -145,17 +175,52 @@
 * Encryption at rest using KMS
 
 ## EFS Performance and storage
-## AMI Overview
 
-* AMI == Amazon Machine Image
-* customization of an EC2 instance
-  * you add your own software / config / OS / monitoring / etc
-  * faster boot / config => all previous software added
-  * AMI built for specific region _but_ can be copied across regions
-* you can launch EC2 instances from:
-  * public AMI => aws provided
-  * your own AMI => make them and maintain yourself
-  * AWS marketplace AMI => made and probably sold by someone else
+* EFS Scale
+  * 1000s of concurrent NFS clients 10GB+/s throughput
+  * grow to _Petabyte_ scale network file system _automatically_
+
+* Performance mode (set at EFS creation time)
+  * General Purpose (default): latency-sensitive use cases (web server, cms, etc)
+  * Max I/O:  higher latency, throughput, higly parallel (big data, media processing)
+
+* Throughput mode
+  * Bursting (1 TB = 50Mb/s + burst of up to 100 MB/s)
+  * Provisioned: set your throughput regardless of storage size
+    * ex: 1Gb/s for 1Tb storage
+
+* EFS Storage Classes
+  * Storage Tiers (lifecycle management feature - move file after X days)
+    * Standard: for frequently accessed files
+    * Infrequent Access (EFS-IA): cost to retrieve files - lower price to store
+      enable EFS-IA with a Lifecycle Policy
+  * Availability and durability
+    * Regional: Multi-AZ, great for prod  (_standard_ is the old name)
+    * One Zone: One AZ, great for dev, backup enabled by default, compatible with IA (EFS one-zone IA)
+    * over 90% cost in savings
+
+### EBS vs EFS
+
+* EBS Volumes:
+  * can be attached to only one instance at a time
+  * are locked at the AZ level
+  * gp2: IO increases if the disk size increases
+  * io1: can increase IO independently
+  * to migrate an EBS volume across AZ
+    * take a snapshot
+    * restore snapshot to another AZ
+  * EBS backups use IO and _you shouldn't run them_ while your app is handling a lot of traffic
+  * Root EBS Volumes of instances get terminated by default if the EC2 instance gets terminated
+    (can be disabled)
+  * pay for provisioned capacity
+
+* EFS
+  * can be mounted 100s of instances across AZ
+  * Linux only
+  * used to share website files (wordpress ex)
+  * higher price point than EBS
+  * can leverage EFS-IA for cost savings
+  * billed only for what you use
 
 ## EC2 Instance Store
 
@@ -172,3 +237,22 @@
     * cant resize the store
     * backups operated by user
 * risk of data loss if hw fails
+
+## AMI Overview
+
+* AMI == Amazon Machine Image
+* customization of an EC2 instance
+  * you add your own software / config / OS / monitoring / etc
+  * faster boot / config => all previous software added
+  * AMI built for specific region _but_ can be copied across regions
+* you can launch EC2 instances from:
+  * public AMI => aws provided
+  * your own AMI => make them and maintain yourself
+  * AWS marketplace AMI => made and probably sold by someone else
+* AMIs locked to region > copy your AMI from Region 1 to Region 2 and launch
+
+### Wrap up
+
+* EFS: for network file sharing - mounted across multiple instances - several AZ
+* EBS: for a network volume attached to one instance - same AZ
+* Instance Store: maximum IO on an EC2 isntance - ephemeral
