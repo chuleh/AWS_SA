@@ -50,8 +50,8 @@
   * during the cooldown period, the ASG will not launch or terminate additional instances (to allow for metrics to stabilize)
   * *ADVICE* use a ready-to-use AMI to reduce configuration time in order to be serving requests faster and reduce cooldown
 
-
 ## ASG for Solutions Architect
+
 * ASG default termination policy
   * Find the AZ which has the most number of instances
   * If there are multiple instances in the AZ, delete the one with the oldest launch configuration
