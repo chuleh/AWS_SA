@@ -39,3 +39,42 @@
 * Read Replicas can have AutoScaling via *Reader Endpoint*
 * Reader Endpoint is a Connection Load Balancing
 * Reader Endpoint connects automatically to Read Replicas
+* Custom Endpoint when you have a subset of aurora reader instances larger than others
+  * custom endpoints generally work having several of them and using them for different kind of queries
+
+## Aurora Serverless
+
+* Automated database instantiaton and auto-scaling based on actual usage
+* Good for infrequent, intermittent or unpredictable workloads
+* No capacity planning needed
+* Pay per second, can be more cost-effective
+* Client connects to proxy fleet (managed by aurora) and Aurora launches instances
+
+## Aurora Multi-Master
+
+* Used in case you want immediate failover in W node (HA)
+* Every node doe RW automatically (1x1) in case the previous one fails
+
+## Global Aurora
+
+* Aurora Cross Region Read Replicas
+  * Useful for disaster recovery
+  * Simple to put in place
+* Aurora Global Database (recommended)
+  * 1 primary region (rw)
+  * up to secondary 5 RO regions - replication lag < 1 sec
+  * up to 16 RR  per secondary regions
+  * helps decreasing latency
+  * promoting another region  (for DR) has an RTO of < 1m
+  * typical cross-region replication takes less than 1 second
+
+## Aurora Machine Learning
+
+* Add ML-Based predictions to your apps via SQL
+* Simple / optimized / secure integration between Aurora and AWS ML services
+  * supported services
+    * Amazon SageMaker (use with any ML model)
+    * Amazon Comprehend (for sentiment analysis)
+* You don't need ML xp
+* Use cases:
+  * fraud detection / ads targeting / sentiment analysis / product recommendations
