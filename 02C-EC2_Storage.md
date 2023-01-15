@@ -16,7 +16,9 @@
 * Attach on-demand.
 
 ⚠️ delete on terminaton box => unchecked by default.
+
 ⚠️ controls the EBS volume behaviour when an EC2 instance terminates
+
 ⚠️ enabled for root volume
 
 ## EBS Snapshots
@@ -33,11 +35,16 @@
 * Snapshots can be automated using Amazon Data Lifecycle Manager
 
 ⚠️ EBS Snapshot Archive => move snapshot to "archive tier" => 75% cheaper
+
     - Takes from 24 to 72hs to be retrieved when archived
+
 ⚠️ EBS Recycle bin for EBS Snapshots
+
     - setup rules to retain deleted snapshots so they can be recovered even after deletion
     - retention from 1 day to 1 year️
+
 ⚠️ Fast snapshot restore  (FSR)
+
     - force full initialization of the snapshot to have no latency on the first use
     - very expensive
 
