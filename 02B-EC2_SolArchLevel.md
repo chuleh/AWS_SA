@@ -1,6 +1,7 @@
 # EC2 Solutions Architect Associate Level
 
 ## Private IP vs Elastic IP vs Public IP
+
 - Public IP
   - means the machine can be identified on the internet
   - must be unique across the whole web (no two machines can have the same Public IP)
@@ -25,9 +26,10 @@
     - use a Load Balancer and don't use a Public IP at all
 
 ## EC2 Placement Groups
+
 - control over the EC2 placement strategy
 - strategies:
-  - _Cluster_: 
+  - *Cluster*:
     - cluster instances into a low-latency gorup in a single AZ
     - same rack - same AZ
     - low latency - 10Gbps bandwidth between instances
@@ -35,7 +37,7 @@
     - use case:
       - Big Data job that needs to complete fast
       - app that needs extreme low latency and high network throughput
-  - _Spread_:
+  - *Spread*:
     - spread instances across underlying hardware (max 7 instances per group per AZ)
     - spans across different AZs
     - reduced risk of failure
@@ -44,7 +46,7 @@
     - use case:
       - app that needs to maximize high availability
       - critical app where each instance needs to be isolated from each other
-  - _Partition_:
+  - *Partition*:
     - spreads instances across many different partitions (which rely on diff sets of racks) within an AZ.
     - scales to 100s of instances per group
     - up to 7 *partitions* per AZ
@@ -57,17 +59,19 @@
       - Kafka / Cassandra / HBase
 
 ## ENI (elastic network interface)
-- logical component in a VPC that represents a _virtual network card_
+
+- logical component in a VPC that represents a *virtual network card*
 - can have:
   - *primary* private IPv4 && one or more secondary IPv4
   - *one* EIP (IPv4) *per* private IPv4
-  - *one* public IPv4 
+  - *one* public IPv4
   - one or more security groups
   - a MAC address
 - can create ENI independently and attach them on the fly on EC2 instances for failover
 - bound to AZ
 
 ## EC2 Hibernate
+
 - no stop/start
 - in-memory state (RAM) is preserved
 - faster boot time
@@ -84,7 +88,9 @@
   - services that take time to initialize
 
 ### Topics that might come up
+
 #### EC2 Nitro
+
 - underlying platform for the next gen of EC2 instances
 - new virtualization technology
 - allows better performance
@@ -96,6 +102,7 @@
   - bare metal: a1.metal, c5.metal, c6g.metal, etc.
 
 #### Understanding vCPU
+
 - only specified at launch
 - multiple threads can run on a CPU (multithreading)
 - each thread is represented as a virtual CPU
@@ -113,6 +120,7 @@
       - good for HPC (high performance computing) workloads
 
 #### Capacity Reservations
+
 - capacity reservation ensures you have EC2 capacity when needed
 - manual or planned end of dater reservation
 - no need for 1/3 year commitment

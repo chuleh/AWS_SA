@@ -1,4 +1,5 @@
-## LBs for Solutions Architect
+# LBs for Solutions Architect
+
 * CLB: questions on SGs, stickiness
 * ALB: Layer 7 of OSI
   * support routing based on hostname (users.example.com & payments.example.com)
@@ -16,9 +17,8 @@
 * LB SSL:
   * Uses and X.509 certificate (SSL/TLS server certificate)
   * Can manage certificates using ACM (AWS Certificate Manager)
-  * Can create or upload own certificates 
+  * Can create or upload own certificates
   * HTTPS Listener:
     * must specify default certificate
     * can add optional list of certificates to support multiple domains
     * clients can use SNI (Server Name Indication) to specify the hostname they reach
-

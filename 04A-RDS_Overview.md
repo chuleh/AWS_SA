@@ -93,3 +93,26 @@
   * retention of backup for as long as you want
 
 ⚠️  in a stopped RDS DB you will still pay for storage. If you plan to stop for a long time => snapshot and restore instead.
+
+## RDS Restore options
+
+* Restoring a snapshot creates a new DB
+* Restoring MySQL RDS database from S3
+  * create a backup of your on-prem db
+  * store it on S3
+  * restore the backup file onto a new RDS instance running mysql
+
+## RDS Security
+
+* At-rest encryption
+  * DB master & replicas encryption using AWS KMS *must be defined at launch*
+  * if master is not encrypted => RR cannot be encrypted
+  ⚠️ to encrypt an un-encrypted DB => go through db snapshot and restore as encrypted
+* In-flight encryption
+  * TLS-ready by default - use the AWSTLS root certificates client-side
+* IAM Authentication
+  * IAM roles to connect to your DB (instead of user/pw)
+* Security groups
+  * control network access to you RDS
+* *NO SSH* except on RDS Custom
+* Audit logs can be enabled and sent to CloudWatch logs for longer retention

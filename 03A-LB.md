@@ -200,9 +200,10 @@
 * SNI solves the problem of loading multiple SSL certificates onto one web server (to serve multiple websites)
 * "newer" protocol - requires the client to *indicate* the hostname of the target server in the initial SSL handshake
 * the server will then find the correct certificate or return the default one
-* only works on *NLB* and *ALB* and *CloudFront* 
+* only works on *NLB* and *ALB* and *CloudFront*
 
 ## ELB - SSL Certificates
+
 * CLB (v1)
   * supports only on SSL certificate
   * must use multiple CLB for multiple hostnames with multiple SSL certs

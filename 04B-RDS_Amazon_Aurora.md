@@ -78,3 +78,43 @@
 * You don't need ML xp
 * Use cases:
   * fraud detection / ads targeting / sentiment analysis / product recommendations
+
+## Aurora Backups
+
+* Automated backups
+  * 1 to 35 days (cannot be disabled)
+  * point in time recovery in that timeframe
+* Manual DB Snapshopts
+  * Manually triggered by the user
+  * Retention backup as long as you want
+
+## Aurora restore options
+
+* Restoring a snapshot creates a new DB
+* Restoring MySQL Aurora cluster from S3
+  * create a backup of your on-prem db using *percona xtrabackup*
+  * store file on S3
+  * restore file onto a new Aurora cluster running MySQL
+
+## Aurora DB Cloning
+
+* Allows to create a new AuroraDB from an existing one
+* Faster than snapshot & restore
+* New DB cluster uses the same cluster volume and data as the original but will change when data updates are made
+* Very fast and cost-effective
+
+⚠️ Useful to create a dev db from prod without impacting the prod db
+
+## RDS Security
+
+* At-rest encryption
+  * DB master & replicas encryption using AWS KMS *must be defined at launch*
+  * if master is not encrypted => RR cannot be encrypted
+  ⚠️ to encrypt an un-encrypted DB => go through db snapshot and restore as encrypted
+* In-flight encryption
+  * TLS-ready by default - use the AWSTLS root certificates client-side
+* IAM Authentication
+  * IAM roles to connect to your DB (instead of user/pw)
+* Security groups
+  * control network access to you Aurora
+* Audit logs can be enabled and sent to CloudWatch logs for longer retention
