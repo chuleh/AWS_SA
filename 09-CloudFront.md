@@ -119,12 +119,12 @@
 
 ## CloudFront Signed URL vs S3 Pre-signed URL
 * CloudFront signed url:
-  - allow access to a path no matter the origin
-  - account wide key-pair, only the root can manage it
-  - can filter by IP, path, date, expiration
-  - can leverage caching features
+  * allow access to a path no matter the origin
+  * account wide key-pair, only the root can manage it
+  * can filter by IP, path, date, expiration
+  * can leverage caching features
 * S3 Pre signed URL:
-  - Issue a request as the person pre-signed the url
-  - Uses the IAM KEy of the signing IAM principal
-  - Limited lifetime
+  * Issue a request as the person pre-signed the url
+  * Uses the IAM KEy of the signing IAM principal
+  * Limited lifetime
 
