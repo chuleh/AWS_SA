@@ -62,3 +62,5 @@
 ⚠️  Solutions Architecture: Snowball into glacier
 * snowball cannot import into Glacier directly
 * must use S3 first  in combination with a lifecycle policy
+
+## Amazon FSx
