@@ -5,9 +5,13 @@ on:
       - 'main'
 
 jobs:
-  - name: md-lindt
-    uses: avto-dev/markdown-lint@v1
-    with:
-      rules: '/lint/rules/changelog.js'
-      config: '/lint/config/changelog.yml'
-      args: './*.md'
+  md-lint:
+    name: lint mds
+    runs-on: ubuntu-latest
+    steps:
+    - name: md-lint
+      uses: avto-dev/markdown-lint@v1
+      with:
+        rules: '/lint/rules/changelog.js'
+        config: '/lint/config/changelog.yml'
+        args: './*.md'
