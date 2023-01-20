@@ -1,0 +1,13 @@
+name: MarkDown Lint
+on:
+  pull_request:
+    branches:
+      - 'main'
+
+jobs:
+  - name: md-lindt
+    uses: avto-dev/markdown-lint@v1
+    with:
+      rules: '/lint/rules/changelog.js'
+      config: '/lint/config/changelog.yml'
+      args: './*.md'

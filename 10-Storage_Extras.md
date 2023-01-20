@@ -32,5 +32,29 @@
     * high security: temperature controlled, GPS, 24/7 video surveillance
     * if > 10 TB of data == use snowmobile
 * Edge Computing
+  * process data while it's being created on an *edge location*
+    * edge location: limited / no internet access - limited / no easy access to computing power
+    * truck on the road / ship on the sea / mining station underground
   * Snowcone
-  * Snowball edge
+    * 2 CPUs / 4G of memory / wire - wireless access
+    * USB-C power cord or optional battery
+  * Snowball edge - compute optmized
+    * 52 vCPUs / 208G of RAM
+    * optinal GPU
+    * 42 TB
+  * Snowball edge - Storage optimized
+   * up to 40 vCPUs / 80G of RAM
+   * object storage clustering available
+  * preprocess data
+  * machine learning at the edge
+  * transcoding media streams
+  * eventually (if needed) can ship back device to AWS
+  * *ALL* can run EC2 instances && AWS Lambda Functions
+  * long term discounts for 1-3 years
+
+* AWS OpsHub
+  * SW you install on your computer to manage snow family device
+  * unlocking and configurin single or clustered devices
+  * launch / manage instances running on Snow devices
+  * monitor device metrics
+  * launch compatible AWS services on device: EC2 / DataSync / NFS
