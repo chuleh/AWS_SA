@@ -9,6 +9,9 @@ jobs:
     name: lint mds
     runs-on: ubuntu-latest
     steps:
+    - name: checkout
+      uses: actions/checkout@v2
+
     - name: md-lint
       uses: avto-dev/markdown-lint@v1
       with:
