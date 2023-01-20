@@ -58,3 +58,9 @@
   * launch / manage instances running on Snow devices
   * monitor device metrics
   * launch compatible AWS services on device: EC2 / DataSync / NFS
+
+⚠️  Solutions Architecture: Snowball into glacier
+* snowball cannot import into Glacier directly
+* must use S3 first  in combination with a lifecycle policy
+
+## Amazon FSx
