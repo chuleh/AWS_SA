@@ -146,7 +146,7 @@
   * on-prem cache && low latency file access
 * types of storage gateway
   * S3 File GW
-    * creae S3 file gateway
+    * create S3 file gateway
     * configured buckets are accessible using the NFS / SMB protocol
     * most recently used data is cached on the file gw
     * supports S3 standard / standard IA / One Zone / Intelligent Tiering
