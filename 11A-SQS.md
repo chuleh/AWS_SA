@@ -90,4 +90,3 @@
   * request goes to EC2 => to SQS => to another ASG to dequeue msgs => insert into RDS && delete once message is written
 * SQS to decouple between application tiers
   * requests go to frontend webapp (with ASG) =>  send msg to SQS Queue => Backend processing app (with ASG) receives message and process it
-
