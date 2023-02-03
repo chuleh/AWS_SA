@@ -8,7 +8,7 @@
 * each sub to the topic will get all the messages (note: new feature to filter messages)
 * up to 12.5M subs per topic
 * 100K topics limit
-* SNS subs 
+* SNS subs
   * emails
   * sms && mobile
   * http endpoints

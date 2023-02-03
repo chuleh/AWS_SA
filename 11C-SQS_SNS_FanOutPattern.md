@@ -8,7 +8,6 @@
 * cross-region delivery: works with SQS queues in other regions
 ⚠️  must make sure SQS queue *access policy* allows for *SNS to write*
 
-
 ## S3 events into multiple queues
 
 * for the same combination of: *event type* (eg: object create) and *prefix* (eg: images/) you can only have *one S3 event rule*
