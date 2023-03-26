@@ -19,7 +19,7 @@ Each of them have _policies_ that defines what each of them can and cannot do.
 * `Users` or `Groups` can be assigned JSON documents called `POLICIES`
 * Policies: define permissions of the users
 * One IAM _user_ per PHYSICAL PERSON
-* one IAM _role_ pero application
+* one IAM _role_ per application
 
 * User can have individual policy + group policies
   Best practice: create user > add user to group and inherit policy
