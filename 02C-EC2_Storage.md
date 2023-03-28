@@ -110,7 +110,7 @@
 
 ## EBS Encryption
 
-* data a rest is encrypted inside the volume
+* data at rest is encrypted inside the volume
 * data in flight moving between instance and volume is encrypted
 * all snapshot are encrypted
 * all volumes created from snapshot are encrypted
@@ -239,9 +239,9 @@
     * better I/O performance
     * good for buffer / cache / scratch data / temp content
     * data survives reboots
-    CONs:
+  * CONs:
     * on stop or termination instance store is lost
-    * cant resize the store
+    * can't resize the store
     * backups operated by user
 * risk of data loss if hw fails
 
@@ -262,4 +262,4 @@
 
 * EFS: for network file sharing - mounted across multiple instances - several AZ
 * EBS: for a network volume attached to one instance - same AZ
-* Instance Store: maximum IO on an EC2 isntance - ephemeral
+* Instance Store: maximum IO on an EC2 instance - ephemeral
