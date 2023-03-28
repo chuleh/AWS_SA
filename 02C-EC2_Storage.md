@@ -8,7 +8,7 @@
 * To move a volume you have to snapshot it first
 * Have provisioned capacity (size in GBs and IOPS) => need to plan ahead.
   * you get billed by provisioned capacity not used!
-* You can increaste the capacity of the drive over time
+* You can increase the capacity of the drive over time
 * Only IO1 and GP2 can be used as boot volumes!
 * think of like a "network usb stick"
 * one or more EBS volumes can be attached to an instance
