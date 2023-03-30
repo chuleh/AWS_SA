@@ -13,11 +13,11 @@
 * High Availability
   * usally goes hand in hand with horizontal scaling
   * High Availability means running your app/system in at least 2 data centers == AZ
-  * goal: survie a data center loss
+  * goal: survive a data center loss
   * HA can be *passive* == RDS Multi AZ.
   * HA can be *active* == for horizontal scaling
 
-* Vertical Scaling: icnrease isntance size (scale up / down)
+* Vertical Scaling: increase instance size (scale up / down)
 
 * Horizontal Scaling: increase number of instances (scale in / out)
 * auto scaling group
@@ -34,7 +34,7 @@
 * Why use an LB
   * Used to spread load across multiple downstream instances
   * Expose a single point of access (DNS) to your app.
-  * Seamleassly handle failures of downstream instances (because of healthchecks)
+  * Seamlessly handle failures of downstream instances (because of healthchecks)
   * Do regular health checks to your instances
   * Provide SSL termination (HTTPS) for your websites
   * Enforce stickiness with cookies
@@ -45,7 +45,7 @@
 * managed by AWS
 * AWS guarantees it will be working
 * AWS takes care of upgrades, maintenance, high availability
-* AWS provides a few configurations knos
+* AWS provides a few configurations knobs
 * Integrated with many AWS offerings / services
 * EC2 / ASG / ECS
 * ACM / CloudWatch
