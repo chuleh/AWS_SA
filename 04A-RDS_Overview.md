@@ -13,8 +13,8 @@
 ## RDS vs Deploying DB on EC2
 
 * *Managed Service*
-  * Automated provisiong (OS patching)
-  * Continuous backups and restore to specific timestap (Point in Time Restore)
+  * Automated provisioning (OS patching)
+  * Continuous backups and restore to specific timestamp (Point in Time Restore)
   * Monitoring dashboards
   * Read Replicas for improved performance
   * Multi AZ setup for DR (Disaster Recovery)
@@ -56,7 +56,7 @@
 ## RDS Multi AZ
 
 * Disaster Recovery
-* SYNC replication (DB in AZ A and db in AZ B - DB A writes at the same time on DB B - whic is in standby)
+* SYNC replication (DB in AZ A and db in AZ B - DB A writes at the same time on DB B - which is in standby)
 * One DNS name - automatic app failover to standby DB => increase availability
 * Failover in case of loss of AZ, loss of network, instance or storage failure
 * No manual intervention in apps
@@ -67,7 +67,7 @@
     * Click on *modify* for the db
     * automatically snapshot is taken
     * a new DB is restored from the snapshot in a new AZ
-    * synchronization is establishd between the two databases
+    * synchronization is established between the two databases
 
 ## RDS Custom
 
@@ -89,7 +89,7 @@
     * ability to restore any point in time (from oldest backup to 5 minutes ago)
   * 7 days retention (can be increased to 35 days)
 * DB Snapshots
-  * manually trigerred by the user
+  * manually triggered by the user
   * retention of backup for as long as you want
 
 ⚠️  in a stopped RDS DB you will still pay for storage. If you plan to stop for a long time => snapshot and restore instead.
