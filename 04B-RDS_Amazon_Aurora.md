@@ -1,4 +1,4 @@
-# Aurora  
+i Aurora  
 
 * propietary technology from AWS (not open source)
 * Postgres and MySQL are both supported as AuroraDB
@@ -21,7 +21,7 @@
 * 6 copies of your data across 3 AZ
   * 4 copies out of 6 needed for WRITES
   * 3 copies out of 6 needed for READS
-  * self-healling with peer-to-peer replication
+  * self-healing with peer-to-peer replication
   * storage is striped across 100s of volumes
 * One Aurora instance takes WRITES (master)
 * Automated failover for master in less than 30 seconds
@@ -53,7 +53,7 @@
 ## Aurora Multi-Master
 
 * Used in case you want immediate failover in W node (HA)
-* Every node doe RW automatically (1x1) in case the previous one fails
+* Every node does RW automatically (1x1) in case the previous one fails
 
 ## Global Aurora
 

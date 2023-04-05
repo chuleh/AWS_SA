@@ -4,7 +4,7 @@
 * Caches are in-memory databases with really high performance, low latency
 * Helps reduced load off of databases for read intensive workloads (reads from cache, not DB)
 * Helps make your application stateless - puts state of app in ElastiCache
-* AWS TAkes care of OS maintenance, optimizations, setup, configuration, monitoring, failure recovery and backups
+* AWS takes care of OS maintenance, optimizations, setup, configuration, monitoring, failure recovery and backups
 * Write Scaling using sharding
 * Read Scaling using Read Replicas
 * Multi AZ with failover capability
