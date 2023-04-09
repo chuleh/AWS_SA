@@ -5,7 +5,7 @@
 * Offline devices to perform data migration
 * Highly secure portable devices to collect and process at the edge and migrate data into and out of AWS
 * Aims to solve challenges
-  * limited connectivy
+  * limited connectivity
   * limited bandwidth
   * high network cost
   * shared bandwidth
@@ -54,12 +54,12 @@
 
 * AWS OpsHub
   * SW you install on your computer to manage snow family device
-  * unlocking and configurin single or clustered devices
+  * unlocking and configuring single or clustered devices
   * launch / manage instances running on Snow devices
   * monitor device metrics
   * launch compatible AWS services on device: EC2 / DataSync / NFS
 
-⚠️  Solutions Architecture: Snowball into glacier
+⚠️  Solutions Architecture: Snowball into Glacier
 * snowball cannot import into Glacier directly
 * must use S3 first  in combination with a lifecycle policy
 
@@ -106,7 +106,7 @@
     * snapshots, replication, low-cost, compression and data de-duplication
     * point-in-time instantaneous cloning (helpful for testing new workloads)
   * FSx for OpenZFS
-    * openZFSD file system on AWS
+    * openZFS file system on AWS
     * file system compatible with NFS (v1, 4, 4.1, 4.2)
     * move workloads running on ZFS to AWS
     * works with:
@@ -115,7 +115,7 @@
       * macOS
       * VMware Cloud on AWS
       * AWS Workspaces && AppStream 2.0
-      * Amazon EC2, EC2, EKS
+      * Amazon EC2, ECS, EKS
     * up to 1M IOPS with < 0.5 ms latency
     * snapshots, compression and low-cost
     * point-in-time instantaneous cloning (helpful for testing new workloads)
@@ -148,10 +148,10 @@
   * S3 File GW
     * create S3 file gateway
     * configured buckets are accessible using the NFS / SMB protocol
-    * most recently used data is cached on the file gw
+    * most recently used data is cached on the file GW
     * supports S3 standard / standard IA / One Zone / Intelligent Tiering
     * transition to Glacier using a lifecycle policy 
-    * bucket access with IAM roles *for each* file Gw
+    * bucket access with IAM roles *for each* file GW
     * SMB protocol has integration with AD for user auth
 
 ## Amazon FSx File Gateway
@@ -202,7 +202,7 @@
   * on-prem / other cloud to AWS (NFS, SMB, HDFS, S3 API, etc) - needs agent
   * AWS to AWS - no agent
 * can synchronize to:
-  * s3
+  * S3
   * EFS
   * FSx
 * replication tasks can be schedule: hourly, daily, weekly
