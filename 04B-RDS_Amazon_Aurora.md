@@ -1,4 +1,4 @@
-i Aurora  
+## Aurora  
 
 * propietary technology from AWS (not open source)
 * Postgres and MySQL are both supported as AuroraDB

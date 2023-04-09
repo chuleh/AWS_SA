@@ -45,7 +45,7 @@
   * multiple destinations 
   * EventBridge capabilites - archive, replay events, reliable delivery
 
-## S3 Baseline Perfirmance
+## S3 Baseline Performance
 
 * S3 automatically scales to high request rates - latency 100-200ms
 * Your app can achieve at least 3.5k PUT/COPY/POST/DELETE and 5.5k GET/HEAD requests per second per prefix in a bucket
