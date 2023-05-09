@@ -46,7 +46,7 @@
 
 * You can restrict who can access your distribution based on country of access
   * Whitelist: Allow your users to access your content only if they're in one of the countries on a list of approved countries
-  * Blocklist: Prevent users from accessing your content if they're in one of the countries in one of the countries on the blacklist
+  * Blocklist: Prevent users from accessing your content if they're in one of the countries on the blacklist
   * The country is determined using a 3rd party Geo-IP Database
     * Use case: Copyright Laws to control access to content
 
@@ -61,8 +61,8 @@
 ## CloudFront Cache invalidation
 
 * CloudFront doesn't know about backend origin updated => it will only get refreshed after TTL expires
-* you can force an *entire* or *partial* refresh (bypassing TTL) performing a *CloudFront Invalidation*
-  * can be all files or special path (/images/)
+* you can force an *entire* or *partial* refresh (bypassing TTL) performing a *CloudFront Cache Invalidation*
+  * can be all files (*) or special path (/images/*)
 
 ## AWS Global Accelerator
 
@@ -94,7 +94,7 @@
 * both integrate with AWS Shield for DDoS protection
 * CloudFront
   * improves performance for both cacheable content (images and videos)
-  * Dynamic content (Such as API acceleration and dynamic site deliver)
+  * Dynamic content (Such as API acceleration and dynamic site delivery)
   * Content is served at the Edge
 * Global Accelerator
   * improves performance for a wide range of applications over TCP and UDP
@@ -125,6 +125,6 @@
   * can leverage caching features
 * S3 Pre signed URL:
   * Issue a request as the person pre-signed the url
-  * Uses the IAM KEy of the signing IAM principal
+  * Uses the IAM Key of the signing IAM principal
   * Limited lifetime
 

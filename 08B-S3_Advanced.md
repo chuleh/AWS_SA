@@ -37,7 +37,7 @@
 * Automatically react to certain events on S3
   * use case: generate thumbnails of images uploaded to s3
   * object name filtering possible (\*.jpg)
-  * can create as meny events as desired
+  * can create as many events as desired
   * notifications can take from seconds to minutes
 * S3 events notifications with EventBridge
   * event => bucket => EventBridge => over 18 aws services as destinations
@@ -48,8 +48,8 @@
 ## S3 Baseline Performance
 
 * S3 automatically scales to high request rates - latency 100-200ms
-* Your app can achieve at least 3.5k PUT/COPY/POST/DELETe and 5.5k GET/HEAD requests per second per prefix in a bucket
-* Therre are no limits to the number of prefixes in a bucket
+* Your app can achieve at least 3.5k PUT/COPY/POST/DELETE and 5.5k GET/HEAD requests per second per prefix in a bucket
+* There are no limits to the number of prefixes in a bucket
 * If you spread READS across all four prefixes evenly, you can achieve 22k request per second for GET and HEAD
 
 ## S3 Performance
@@ -60,7 +60,7 @@
   * can help parallelize uploads
 * S3 Transfer acceleration (upload only)
   * increase transfer speed by transferring file to an AWS edge location which will forward the data to the S3 bucket in the target region
-  * compatible with mult-part upload
+  * compatible with multi-part upload
 * S3 Byte-range fetches
   * speed up downloads
   * Parallelize GETs by requesting specific byte ranges

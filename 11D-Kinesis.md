@@ -24,7 +24,7 @@
     * each shard gets 2MB/s out (classic or enhanced fan-out consumer)
     * pay per shard provisioned per hour
   * on-demand mode:
-    * no need to provisio or manage the capacity
+    * no need to provision or manage the capacity
     * default capacity provisioned (4MB/s in)
     * scales automatically based on observed throughput peak during *the last 30 days*
     * pay per stream per hour && data in/out per GB
@@ -32,7 +32,7 @@
 ## Kinesis Data Streams Security
 
 * control access / authorization using IAM policies
-* encryption in fligh using HTTPS endpoints
+* encryption in flight using HTTPS endpoints
 * encryption at rest using KMS
 * can implement encryption/decryption of data on client side
 * VPC Endpoints available for Kinesis
