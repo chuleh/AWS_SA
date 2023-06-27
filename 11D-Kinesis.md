@@ -24,7 +24,7 @@
     * each shard gets 2MB/s out (classic or enhanced fan-out consumer)
     * pay per shard provisioned per hour
   * on-demand mode:
-    * no need to provision or manage the capacity
+    * no need to provisio or manage the capacity
     * default capacity provisioned (4MB/s in)
     * scales automatically based on observed throughput peak during *the last 30 days*
     * pay per stream per hour && data in/out per GB
@@ -32,7 +32,7 @@
 ## Kinesis Data Streams Security
 
 * control access / authorization using IAM policies
-* encryption in flight using HTTPS endpoints
+* encryption in fligh using HTTPS endpoints
 * encryption at rest using KMS
 * can implement encryption/decryption of data on client side
 * VPC Endpoints available for Kinesis
@@ -71,3 +71,27 @@
       * http endpoint
 
 * All or failed data can be sent to a S3 backup bucket
+
+### Kinesis Data Firehose notes
+
+* S3 buffer hints:
+  * Buffer size: 1MB to 128MB => lower buffer higher delivery && +cost && -latency|| bigger buffer lower delivery && -cost && +latency
+  * buffer interval: > interval == more time to collect data && size of data may be bigger || < interval == sends data more freq && *may be* advantegeous for shorter cycles of data activity
+    * 60 secs min - 900 secs max
+  * Permissions: must have a role. Either created on the fly or existing one to read/write to S3.
+
+### Kinesis Data Streams vs FireHose
+
+* KDS
+  * Streaming service for ingest at scale
+  * write custom code (producer / consumer)
+  * real time (~200 ms)
+  * manage scaling (sharding / splitting)
+  * data storage for 1 to 365 days
+  * supports replay capability
+* KDF
+  * Load streaming data into S3 / RedShift / OpenSearch / 3rd party / custom http
+  * fully managed
+  * *near real time*
+  * AS
+  * *NO* data storage == no replay

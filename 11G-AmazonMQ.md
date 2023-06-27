@@ -1,6 +1,6 @@
 # AmazonMQ
 
-* managed broker service for:
+* managed message broker service for:
   * RabbitMQ && ActiveMQ
 * when migrating to the cloud, instead of re-engineering the app to use SQS and SNS (AWS propietary protocols) we can use AmazonMQ
   * traditional open protocols like: MQTT, AMQP, STOMP, Openwire, WSS
