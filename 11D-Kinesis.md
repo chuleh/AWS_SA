@@ -37,3 +37,37 @@
 * can implement encryption/decryption of data on client side
 * VPC Endpoints available for Kinesis
 * monitor API calls using CloudTrail
+
+## Kinesis Data Firehose
+
+* fully managed
+* no administration
+* automatic scaling
+* serverless
+* *Near Real Time* service
+  * 60 seconds latency minimum for non full batches
+  * 1 MB of data at a time
+* Pay for data going thru firehose
+* support many data formats, conversions, transformations, compression
+* supports custom data transformations using aws lambda
+
+* loads data streams into data stores
+  * producers can be:
+    * apps / kinesis agent / kinesis streams / CloudWatch Event / AWS IoT / Client /SDK KPL
+  * all of these apps send a *record* (1MB max) to *Data Firehose*
+  * data *can* trasnformed by *Firehose* into a Lambda
+  * finally written in *batches* into destinations
+  * destinations:
+    * AWS:
+      * S3
+      * Amazon RedShift (copy thru S3)
+      * Amazon OpenSearch
+    * 3rd party:
+      * DataDog
+      * Splunk
+      * NewRelic
+      * MongoDB
+    * Custom Destinations
+      * http endpoint
+
+* All or failed data can be sent to a S3 backup bucket
