@@ -10,7 +10,7 @@
 
 ## Amazon EventBridge Rules
 
-*  rules can be created from any AWS services and trigger another AWS service
+* rules can be created from any AWS services and trigger another AWS service
 
 ## Partner Event Bus
 
@@ -21,12 +21,20 @@
 
 * own custom apps send events to their own custom event bus
 
-##  Schema Registry
+## Schema Registry
 
+* JSON format
 * EventBridge can analyze the events in your bus and infer the *schema*
-* the schema registry allows
+* the schema registry allows to generate code for you app that will know in advance how data is structured in the even bus
+* schema can be versioned
+
+## Resource-based policy
+
+* manage permissions for a specific Even Bus
+  * ex: allow/deny events from another AWS account or region
+  * aggregate all events from your AWS Organization in a single AWS Acct or AWS Region
+
 ## Good to know
 
 * event buses can be accessed by other AWS accounts using resource-based policies
 * you can *archive events* sent to an event bus (indef or set period) => ability to replay archived events
-
