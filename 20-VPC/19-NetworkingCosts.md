@@ -2,7 +2,7 @@
 
 * any incoming traffic into EC2 is *free*
   * any traffic between instances *inside the same AZ using private IPs*
-* same region *but* traffic between 2 diff AZs 
+* same region *but* traffic between 2 diff AZs
   * $0,02 if using Public/EIP (leaves AWS network and goes back in)
   * $0,01 if using private ip
 * traffic between regions == $0,02
@@ -21,7 +21,7 @@
 
 * S3 ingress == free
 * S3 to internet == $0,09 per GB
-* S3 transfer acceleration 
+* S3 transfer acceleration
   * faster transfer times (50 to 500x better)
   * additional cost on top of data transfer pricing == +0,04 to 0,08 per GB
 * CloudFront to internet == $0,085 per GB (slightly cheaper than S3)
@@ -42,4 +42,3 @@
     * EC2 instance ==> VPC Endpoint ==> S3 bucket
       * no cost for using GW Endpoint
       * $0,01 data transfer in/out (Same region)
-

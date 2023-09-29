@@ -25,4 +25,3 @@
   * active flow inspection
     * intrusion-prevention capabilities (like GW LB but managed by AWS)
   * send logs of rule matches to S3 / CW Logs / Kinesis Data Firehose
-
