@@ -20,7 +20,7 @@
       * Snowball edge compute optimized: *42 TB of HDD capacity* for block volume and s3 compatible object storage
   * Snowcone
     * small, portable computing anywhere, rugged, secure, withstands harsh environments
-    * light 
+    * light
     * used for: edge computing, storage, data transfer
     * *8 TB* of usable storage
     * used when snowball doesn't fit
@@ -43,8 +43,8 @@
     * optinal GPU
     * 42 TB
   * Snowball edge - Storage optimized
-   * up to 40 vCPUs / 80G of RAM
-   * object storage clustering available
+  * up to 40 vCPUs / 80G of RAM
+  * object storage clustering available
   * preprocess data
   * machine learning at the edge
   * transcoding media streams
@@ -60,6 +60,7 @@
   * launch compatible AWS services on device: EC2 / DataSync / NFS
 
 ⚠️  Solutions Architecture: Snowball into Glacier
+
 * snowball cannot import into Glacier directly
 * must use S3 first  in combination with a lifecycle policy
 
@@ -121,7 +122,6 @@
     * point-in-time instantaneous cloning (helpful for testing new workloads)
 * fully managed service
 
-
 ## Amazon FSx File System
 
 * Scratch file system
@@ -150,7 +150,7 @@
     * configured buckets are accessible using the NFS / SMB protocol
     * most recently used data is cached on the file GW
     * supports S3 standard / standard IA / One Zone / Intelligent Tiering
-    * transition to Glacier using a lifecycle policy 
+    * transition to Glacier using a lifecycle policy
     * bucket access with IAM roles *for each* file GW
     * SMB protocol has integration with AD for user auth
 
@@ -175,11 +175,11 @@
 * VTL (Virtual Tape Library) backed by S3 and Glacier
 * back up data using existing tape-based processes
 
-
-⚠️ for all cases, gateway *has to be installed on your datacenter* 
+⚠️ for all cases, gateway *has to be installed on your datacenter*
 *However* sometimes you don't have additional virtual servers to run the gateway => *Storage Gateway Hardware appliance*
 
-*Storage Gateway Hardware appliance*
+## Storage Gateway Hardware appliance
+
 * hardware you buy on amazon.com / has the required hardware to run the gateway client
 * physical to install on your datacenter
 
@@ -198,7 +198,7 @@
 
 ### AWS DataSync
 
-* move large amount of data to and from 
+* move large amount of data to and from
   * on-prem / other cloud to AWS (NFS, SMB, HDFS, S3 API, etc) - needs agent
   * AWS to AWS - no agent
 * can synchronize to:

@@ -118,6 +118,7 @@
 * Signed cookies == access to multiple files (one signed cookie for many files)
 
 ## CloudFront Signed URL vs S3 Pre-signed URL
+
 * CloudFront signed url:
   * allow access to a path no matter the origin
   * account wide key-pair, only the root can manage it
@@ -127,4 +128,3 @@
   * Issue a request as the person pre-signed the url
   * Uses the IAM Key of the signing IAM principal
   * Limited lifetime
-

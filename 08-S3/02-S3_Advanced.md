@@ -1,25 +1,26 @@
 # Advanced S3
 
 ## S3 Lifecycle Policies
+
 * You can transition objects between storage classes
 * For infrequently accessed object, move them to STANDARD_IA
 * For archive objects you don't need in real time, GLACIER or DEEP_ARCHIVE
 * Moving objects can be automated using a lifecycle configuration
-  - Transition actions
-    - It defines when objects are transitioned to another storage class
-    - Move objects to STANDARD_IA class 60 days after creation
-    - Move to Glacier for archiving after 6 months
-  - Expiration Actions
-    - Configure objects to expire (Delete) after some time
-    - Access Log files can be set to delete after 365 days
-    - Can be used to delete old versions of files (if versioning is enabled)
-    - Can be used to delete incomplete multi-part uploads
+  * Transition actions
+    * It defines when objects are transitioned to another storage class
+    * Move objects to STANDARD_IA class 60 days after creation
+    * Move to Glacier for archiving after 6 months
+  * Expiration Actions
+    * Configure objects to expire (Delete) after some time
+    * Access Log files can be set to delete after 365 days
+    * Can be used to delete old versions of files (if versioning is enabled)
+    * Can be used to delete incomplete multi-part uploads
 * Rules can be created for a certain prefix (ex - S3://mybucket/mp3/asterisco)
 * Rules can be created for certain objects tags (ex - Department: Finance)
 
 ## S3 Analytics
 
-*  helps you decide when to transition objects to the right storage class
+* helps you decide when to transition objects to the right storage class
 * recommendations for *standard* and *standard IA*
   * *does not* work for One-Zone IA and Glacier
 * report is updated daily
@@ -42,7 +43,7 @@
 * S3 events notifications with EventBridge
   * event => bucket => EventBridge => over 18 aws services as destinations
   * advanded filtering with JSON
-  * multiple destinations 
+  * multiple destinations
   * EventBridge capabilites - archive, replay events, reliable delivery
 
 ## S3 Baseline Performance
@@ -70,9 +71,9 @@
 
 ## S3 Select & Glacier Select
 
-  * retrieve less data using SQL by performing server side filtering
-  * can filter by rows & columns (simple SQL statements)
-  * less network transfer, less CPU cost client-side
+* retrieve less data using SQL by performing server side filtering
+* can filter by rows & columns (simple SQL statements)
+* less network transfer, less CPU cost client-side
 
 ## S3 batch operations
 

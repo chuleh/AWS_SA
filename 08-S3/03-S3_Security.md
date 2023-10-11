@@ -1,4 +1,4 @@
-## Encryption
+# Encryption
 
 * 4 methods for encrypting in S3
   * SSE-S3: encrypts objects using keys handled and managed by AWS
@@ -43,7 +43,7 @@
 * Cross-Origin Resource Sharing
 * web browser based mechanism to allow requests to other origins while visiting the main origin
 * Origin = scheme (protocol) + host (domain) + port
-  * example: https://www.example.com (port == 80 || 443)
+  * example: <https://www.example.com> (port == 80 || 443)
 * If you request data from another S3 bucket, you need to enable CORS
 * Cross Origin Resource Sharing allows you to limit the number of websites that can request your files in S3 (and limit
   your costs)
